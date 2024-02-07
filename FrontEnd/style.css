@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+}
+body{
+    height: 100%;
+    background: linear-gradient(#449dbb, #2c7786);
+}
+header{
+    background-color: rgb(79, 153, 168);
+}
+ h1{
+    color: rgb(241, 237, 237);
+    height: 8rem;
+    justify-content: center;
+    align-items: center;
+}
+header h1,
+ul,
+.Inputs,
+.informations,
+#list{
+    display: flex;
+}
+
+ul {
+    width: 23rem;
+    align-items: center;
+    flex-direction: column ;
+    margin: auto;
+}
+.Inputs{
+    justify-content: center;
+    padding-top: 4rem;
+    border-color: rgb(233, 228, 228);
+    flex-direction: column;
+    align-items: center;
+}
+#createTask{
+    height: 3rem;
+    width: 18rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-style: none;
+}
+#content{
+    width: 18rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-style: none;
+}
+#deadline{
+    width: 18rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-style: none;
+
+}
+#createTask::placeholder,
+#content::placeholder,
+#deadline::placeholder{
+    text-align: center;
+}
+
+#create{
+    height: 3rem;
+    width: 8rem;
+}
+#list{
+    color: white;
+    align-items: center;
+    flex-direction: column;
+
+}
+.taskCard{
+    border: 1px solid #ebe7e7;
+    width: 40%;
+    padding: 1.5rem;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+    margin-top: 0.8rem;
+    color: #ebe7e7;
+    background-color: #24636f;
+}
+#icons{
+    color: green;
+}

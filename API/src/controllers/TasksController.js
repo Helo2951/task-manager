@@ -13,6 +13,10 @@ class TasksController{
         })
         return res.status(201).json('Tarefa criada com sucesso')
     }
+    async listTasks(req, res) {
+        const tasks = await knex('tasks')
+        return res.status(200).json(tasks)
+    }
     async deleteTask(req, res) {
         const {id} = req.params
 
