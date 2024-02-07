@@ -6,10 +6,10 @@
 }
 body{
     height: 100%;
-    background: linear-gradient(#449dbb, #2c7786);
+    background:whitesmoke;
 }
 header{
-    background-color: rgb(79, 153, 168);
+    background-color: rgb(56, 101, 115);
 }
  h1{
     color: rgb(241, 237, 237);
@@ -83,6 +83,13 @@ ul {
     margin-top: 0.8rem;
     color: #ebe7e7;
     background-color: #24636f;
+}
+.taskCard button{
+    background-color: rgba(255, 0, 0, 0.653);
+    color: white;
+    border: none;
+    width: 5rem;
+    border-radius: 8px;
 }
 #icons{
     color: green;

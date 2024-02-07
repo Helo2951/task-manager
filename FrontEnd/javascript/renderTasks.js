@@ -1,8 +1,34 @@
+import { deleteTask } from "./deleteTasks.js"
 import { getTasks } from "./getTasks.js"
 
 const list = document.getElementById('list')
 
 async function renderTasks() {
+    function taskList(task){
+        const taskCard = document.createElement("div")
+        taskCard.classList.add('taskCard')
+
+        const taskTitle = document.createElement('h2')
+        taskTitle.textContent = task.title
+
+        const taskContent = document.createElement('p')
+        taskContent.textContent = task.content
+
+        const taskDeadline = document.createElement('p')
+        taskDeadline.textContent = task.deadline
+
+        const deleteButton = document.createElement("button")
+        deleteButton.textContent = "Excluir"
+        deleteButton.onclick = () => {
+            deleteTask(task.id)
+        }
+        taskCard.appendChild(taskTitle)
+        taskCard.appendChild(taskContent)
+        taskCard.appendChild(taskDeadline)
+        taskCard.appendChild(deleteButton)
+
+            return taskCard
+    }
     list.innerHTML = ''
 
     const tasks = await getTasks()
@@ -14,14 +40,8 @@ async function renderTasks() {
     }
 
     tasks.forEach(task => {
-        let item = document.createElement("div")
-        item.classList.add('taskCard')
-        item.innerHTML = `
-        <h2>${task.title}</h2>
-        <p>${task.content}</p>
-        <p>${task.deadline}</p>
-        ` 
-        list.appendChild(item)
+        const newTask = taskList(task)
+        list.appendChild(newTask)
     })
     console.log(tasks);
 }
