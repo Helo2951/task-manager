@@ -76,20 +76,26 @@ ul {
 }
 .taskCard{
     border: 1px solid #ebe7e7;
-    width: 40%;
+    width: 30%;
     padding: 1.5rem;
     border-radius: 7px;
     margin-bottom: 1rem;
     margin-top: 0.8rem;
     color: #ebe7e7;
     background-color: #24636f;
+    border: 1px double rgba(0, 0, 0, 0.424);
+    
 }
 .taskCard button{
-    background-color: rgba(255, 0, 0, 0.653);
+    background-color: rgba(255, 57, 57, 0.653);
     color: white;
     border: none;
     width: 5rem;
     border-radius: 8px;
+    border: 1px double rgba(0, 0, 0, 0.424);
+}
+.completeBox input {
+    display: none;
 }
 #icons{
     color: green;

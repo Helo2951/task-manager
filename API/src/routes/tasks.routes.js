@@ -7,7 +7,9 @@ const tasksController = new TasksController()
 
 tasksRouter.post('/:user_id', tasksController.createTask);
 tasksRouter.delete('/:id', tasksController.deleteTask);
-tasksRouter.put('/:id', tasksController.updateTask)
-tasksRouter.get('/', tasksController.listTasks)
+tasksRouter.put('/:id', tasksController.updateTask);
+tasksRouter.put('/statusTask/:id', tasksController.statusTask);
+
+tasksRouter.get('/', tasksController.listTasks);
 
 module.exports = tasksRouter

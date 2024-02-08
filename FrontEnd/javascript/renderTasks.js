@@ -17,6 +17,23 @@ async function renderTasks() {
         const taskDeadline = document.createElement('p')
         taskDeadline.textContent = task.deadline
 
+        const completeBox = document.createElement('input')
+        completeBox.classList.add('completeBox');
+        completeBox.type = 'checkbox'
+        taskCard.appendChild(completeBox);
+
+        completeBox.addEventListener('change', () => {
+            if (completeBox.checked) {
+                taskTitle.style.textDecoration = "line-through"
+                taskContent.style.textDecoration = "line-through"
+                taskDeadline.style.textDecoration = "line-through"
+            }else{
+                taskTitle.style.textDecoration = "none"
+                taskContent.style.textDecoration = "none"
+                taskDeadline.style.textDecoration = "none"
+            }
+        })
+
         const deleteButton = document.createElement("button")
         deleteButton.textContent = "Excluir"
         deleteButton.onclick = () => {

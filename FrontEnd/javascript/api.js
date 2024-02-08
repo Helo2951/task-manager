@@ -9,6 +9,10 @@ async function sendDataToServer(e) {
     const deadline = document.getElementById('deadline').value
     console.log(createTask)
 
+    if (title === '' || deadline === '') {
+        alert("Preencha os campos para continuar!");
+        return 
+    }
     const data = {
         title,
         content,
@@ -40,4 +44,6 @@ async function sendDataToServer(e) {
     if (title === '') {
         alert("You must write something!");
     }
+    location.reload()
+
 }
