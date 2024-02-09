@@ -5,13 +5,13 @@ class TasksController{
         const {title, content, deadline} = req.body
         const {user_id} = req.params
 
-        const status = false
+        const done = false
 
         await knex('tasks').insert({
             title,
             content,
             deadline,
-            status,
+            done,
             user_id
         })
         return res.status(201).json('Tarefa criada com sucesso')
@@ -40,17 +40,22 @@ class TasksController{
     async statusTask(req, res) {
      const {id} = req.params;
 
-     const [task] = await knex('tasks').where({id});
+     const task = await knex('tasks').where({id});
+     
+     const [{done}] = task 
 
-     console.log(task)
+     let updatedStatus = done
+     
+     if(done === 0){
+        updatedStatus = 1
+     }else {
+        updatedStatus = 0
+     }
 
-     const statusTask = task.status
-
-    const updatedStatus = !statusTask
-    await knex('tasks').where({id}).update(status, updatedStatus)
+     console.log(done)
+     await knex('tasks').where({id}).update({done}),[updatedStatus]
 
      res.status(200).json(updatedStatus)
-        
     }
 }
 

@@ -7,7 +7,7 @@ exports.up = (knex) => {
     table.integer('user_id').references('id').inTable('users').onDelete('CASCADE');
     table.timestamp('created_at').default(knex.fn.now());
     table.datetime('deadline').notNullable();
-    table.boolean("status");
+    table.boolean('done');
   })
 
 }

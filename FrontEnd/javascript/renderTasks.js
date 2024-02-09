@@ -1,5 +1,6 @@
 import { deleteTask } from "./deleteTasks.js"
 import { getTasks } from "./getTasks.js"
+import { updateTask } from "./updateTask.js"
 
 const list = document.getElementById('list')
 
@@ -8,6 +9,16 @@ async function renderTasks() {
         const taskCard = document.createElement("div")
         taskCard.classList.add('taskCard')
 
+        const checkCard = document.createElement("div")
+        checkCard.classList.add('checkCard')
+
+        const completeBox = document.createElement('input')
+        completeBox.classList.add('completeBox');
+        completeBox.type = 'checkbox'
+        // taskCard.appendChild(completeBox);
+
+        const spanBox = document.createElement('span')
+        
         const taskTitle = document.createElement('h2')
         taskTitle.textContent = task.title
 
@@ -17,17 +28,15 @@ async function renderTasks() {
         const taskDeadline = document.createElement('p')
         taskDeadline.textContent = task.deadline
 
-        const completeBox = document.createElement('input')
-        completeBox.classList.add('completeBox');
-        completeBox.type = 'checkbox'
-        taskCard.appendChild(completeBox);
 
         completeBox.addEventListener('change', () => {
             if (completeBox.checked) {
+             updateTask(task.id)
                 taskTitle.style.textDecoration = "line-through"
                 taskContent.style.textDecoration = "line-through"
                 taskDeadline.style.textDecoration = "line-through"
             }else{
+                updateTask(task.id)
                 taskTitle.style.textDecoration = "none"
                 taskContent.style.textDecoration = "none"
                 taskDeadline.style.textDecoration = "none"
@@ -39,10 +48,18 @@ async function renderTasks() {
         deleteButton.onclick = () => {
             deleteTask(task.id)
         }
+
+        // const updateButton = document.createElement("button")
+        // updateButton.textContent = "Editar"
+
         taskCard.appendChild(taskTitle)
         taskCard.appendChild(taskContent)
         taskCard.appendChild(taskDeadline)
         taskCard.appendChild(deleteButton)
+        taskCard.appendChild(checkCard)
+        checkCard.appendChild(spanBox)
+        checkCard.appendChild(completeBox)
+        // taskCard.appendChild(updateButton)
 
             return taskCard
     }

@@ -2,79 +2,90 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-   
+
 }
-body{
+
+body {
     height: 100%;
-    background:whitesmoke;
+    background: rgb(242, 242, 242);
 }
-header{
+
+header {
     background-color: rgb(56, 101, 115);
 }
- h1{
+
+h1 {
     color: rgb(241, 237, 237);
     height: 8rem;
     justify-content: center;
     align-items: center;
 }
+
 header h1,
 ul,
 .Inputs,
 .informations,
-#list{
+#list {
     display: flex;
 }
 
 ul {
     width: 23rem;
     align-items: center;
-    flex-direction: column ;
+    flex-direction: column;
     margin: auto;
 }
-.Inputs{
+
+.Inputs {
     justify-content: center;
     padding-top: 4rem;
     border-color: rgb(233, 228, 228);
     flex-direction: column;
     align-items: center;
 }
-#createTask{
+
+#createTask {
     height: 3rem;
-    width: 18rem;
+    width: 20rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border-style: none;
 }
-#content{
-    width: 18rem;
+
+#content {
+    width: 20rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border-style: none;
 }
-#deadline{
-    width: 18rem;
+
+#deadline {
+    width: 20rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
     border-style: none;
 
 }
+
 #createTask::placeholder,
 #content::placeholder,
-#deadline::placeholder{
+#deadline::placeholder {
     text-align: center;
 }
 
-#create{
+#create {
     height: 3rem;
     width: 8rem;
 }
-#list{
+
+#list {
     color: white;
     align-items: center;
     flex-direction: column;
 
 }
-.taskCard{
+
+.taskCard {
     border: 1px solid #ebe7e7;
     width: 30%;
     padding: 1.5rem;
@@ -84,9 +95,10 @@ ul {
     color: #ebe7e7;
     background-color: #24636f;
     border: 1px double rgba(0, 0, 0, 0.424);
-    
+
 }
-.taskCard button{
+
+.taskCard button {
     background-color: rgba(255, 57, 57, 0.653);
     color: white;
     border: none;
@@ -94,9 +106,17 @@ ul {
     border-radius: 8px;
     border: 1px double rgba(0, 0, 0, 0.424);
 }
-.completeBox input {
-    display: none;
+
+.completeBox {
+    width: 2rem;
+    height: 3rem;
+    cursor: pointer;
 }
-#icons{
+
+.completeBox input:checked ~{
+    background-color: rgba(255, 57, 57, 0.653);
+}
+
+#icons {
     color: green;
 }
