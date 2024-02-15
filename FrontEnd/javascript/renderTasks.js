@@ -9,24 +9,40 @@ async function renderTasks() {
         const taskCard = document.createElement("div")
         taskCard.classList.add('taskCard')
 
+        const contentCard = document.createElement("div")
+        contentCard.classList.add('contentCard')
+
+        const buttonCard = document.createElement("div")
+        buttonCard.classList.add('buttonCard')
+
         const checkCard = document.createElement("div")
         checkCard.classList.add('checkCard')
+        
+        const checklabel = document.createElement("label")
+        checklabel.classList.add('checklabel')
+        checklabel.for = 'completeBox'
 
         const completeBox = document.createElement('input')
         completeBox.classList.add('completeBox');
+        completeBox.id = 'completeBox'
         completeBox.type = 'checkbox'
-        // taskCard.appendChild(completeBox);
+        completeBox.title = 'status'
 
         const spanBox = document.createElement('span')
         
         const taskTitle = document.createElement('h2')
+        taskTitle.id = `title-${task.id}`
         taskTitle.textContent = task.title
+        taskTitle.contentEditable = true
 
         const taskContent = document.createElement('p')
         taskContent.textContent = task.content
+        taskContent.contentEditable = true
 
         const taskDeadline = document.createElement('p')
         taskDeadline.textContent = task.deadline
+        taskDeadline.contentEditable = true
+
 
 
         completeBox.addEventListener('change', () => {
@@ -44,22 +60,30 @@ async function renderTasks() {
         })
 
         const deleteButton = document.createElement("button")
+        deleteButton.classList.add("deleteButton")
+        deleteButton.type = "button"
         deleteButton.textContent = "Excluir"
         deleteButton.onclick = () => {
             deleteTask(task.id)
         }
 
-        // const updateButton = document.createElement("button")
-        // updateButton.textContent = "Editar"
+        const updateButton = document.createElement("button")
+        updateButton.classList.add("updateButton")
+        updateButton.type = "button"
+        updateButton.textContent = "Editar"
+        // updateButton.onclick = () 
 
-        taskCard.appendChild(taskTitle)
-        taskCard.appendChild(taskContent)
-        taskCard.appendChild(taskDeadline)
-        taskCard.appendChild(deleteButton)
+        taskCard.appendChild(contentCard)
         taskCard.appendChild(checkCard)
-        checkCard.appendChild(spanBox)
-        checkCard.appendChild(completeBox)
-        // taskCard.appendChild(updateButton)
+        contentCard.appendChild(taskTitle)
+        contentCard.appendChild(taskContent)
+        contentCard.appendChild(taskDeadline)
+        contentCard.appendChild(buttonCard)
+        buttonCard.appendChild(deleteButton)
+        buttonCard.appendChild(updateButton)
+        checkCard.appendChild(checklabel)
+        checklabel.appendChild(completeBox)
+        checklabel.appendChild(spanBox)
 
             return taskCard
     }
@@ -79,4 +103,6 @@ async function renderTasks() {
     })
     console.log(tasks);
 }
+
+
 renderTasks()

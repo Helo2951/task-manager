@@ -25,7 +25,8 @@ header h1,
 ul,
 .Inputs,
 .informations,
-#list {
+#list,
+.checkCard{
     display: flex;
 }
 
@@ -95,26 +96,53 @@ ul {
     color: #ebe7e7;
     background-color: #24636f;
     border: 1px double rgba(0, 0, 0, 0.424);
+    display: flex;
+    justify-content: space-between;
+    
+    & .contentCard {
+        
+        & .deleteButton{
+            background-color: rgba(255, 57, 57, 0.653);
+            color: white;
+            border: none;
+            width: 5rem;
+            border-radius: 8px;
+            border: 1px double rgba(0, 0, 0, 0.424);
+        }
+    
+        & .updateButton{
+            background-color: rgba(255, 155, 32, 0.822);
+            color: white;
+            border: none;
+            width: 5rem;
+            border-radius: 8px;
+            border: 1px double rgba(0, 0, 0, 0.424);
+        }
+    }
 
 }
-
-.taskCard button {
-    background-color: rgba(255, 57, 57, 0.653);
-    color: white;
-    border: none;
-    width: 5rem;
-    border-radius: 8px;
-    border: 1px double rgba(0, 0, 0, 0.424);
+/* .checkLabel .completeBox{
+    opacity: 0;
+    cursor: pointer;
 }
-
+.checkLabel:hover input ~ .spanBox{
+    background-color: red;
+}
+.spanBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 2px;
+    background-color: aquamarine;
+} */
+.checkCard{
+    align-items: center;
+}
 .completeBox {
     width: 2rem;
     height: 3rem;
-    cursor: pointer;
-}
-
-.completeBox input:checked ~{
-    background-color: rgba(255, 57, 57, 0.653);
 }
 
 #icons {
