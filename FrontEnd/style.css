@@ -26,7 +26,8 @@ ul,
 .Inputs,
 .informations,
 #list,
-.checkCard{
+.checkCard,
+.buttonCard {
     display: flex;
 }
 
@@ -98,10 +99,10 @@ ul {
     border: 1px double rgba(0, 0, 0, 0.424);
     display: flex;
     justify-content: space-between;
-    
+
     & .contentCard {
-        
-        & .deleteButton{
+
+        & .deleteButton {
             background-color: rgba(255, 57, 57, 0.653);
             color: white;
             border: none;
@@ -109,8 +110,8 @@ ul {
             border-radius: 8px;
             border: 1px double rgba(0, 0, 0, 0.424);
         }
-    
-        & .updateButton{
+
+        & .updateButton {
             background-color: rgba(255, 155, 32, 0.822);
             color: white;
             border: none;
@@ -121,25 +122,15 @@ ul {
     }
 
 }
-/* .checkLabel .completeBox{
-    opacity: 0;
-    cursor: pointer;
+
+.buttonCard {
+    gap: 0.5rem;
 }
-.checkLabel:hover input ~ .spanBox{
-    background-color: red;
-}
-.spanBox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 2px;
-    background-color: aquamarine;
-} */
-.checkCard{
+
+.checkCard {
     align-items: center;
 }
+
 .completeBox {
     width: 2rem;
     height: 3rem;
@@ -147,4 +138,76 @@ ul {
 
 #icons {
     color: green;
+}
+
+/* /////////////// JANELA MODAL ////////////// */
+.card {
+    padding: 4.8rem 6.4rem 6.4rem;
+    background: rgb(242, 242, 242);
+    max-width: 42.8rem;
+    margin-inline: auto;
+
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    border-radius: .6rem;
+    display: unset;
+}
+
+.modal-wrapper.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-wrapper {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+
+    display: grid;
+    place-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    position: relative;
+}
+
+.modal .close {
+    background: none;
+    border: none;
+
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+
+    cursor: pointer;
+
+    transition: transform .3s;
+}
+
+.modal .close:hover {
+    transform: scale(1.1);
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .modalContent #save {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    width: 5rem;
+    border-radius: 8px;
+    border: 1px double rgba(0, 0, 0, 0.424);
+}
+#editTitle,
+#editContent,
+#editDeadline{
+    border-color: rgb(233, 228, 228);
+    text-align: center;
+    border: none;
+    width: 100%;
 }

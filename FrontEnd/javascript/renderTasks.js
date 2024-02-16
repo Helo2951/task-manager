@@ -1,11 +1,12 @@
 import { deleteTask } from "./deleteTasks.js"
 import { getTasks } from "./getTasks.js"
+import { Modal } from "./modal.js"
 import { updateTask } from "./updateTask.js"
 
 const list = document.getElementById('list')
 
 async function renderTasks() {
-    function taskList(task){
+    function taskList(task) {
         const taskCard = document.createElement("div")
         taskCard.classList.add('taskCard')
 
@@ -17,7 +18,7 @@ async function renderTasks() {
 
         const checkCard = document.createElement("div")
         checkCard.classList.add('checkCard')
-        
+
         const checklabel = document.createElement("label")
         checklabel.classList.add('checklabel')
         checklabel.for = 'completeBox'
@@ -29,29 +30,26 @@ async function renderTasks() {
         completeBox.title = 'status'
 
         const spanBox = document.createElement('span')
-        
+
         const taskTitle = document.createElement('h2')
         taskTitle.id = `title-${task.id}`
         taskTitle.textContent = task.title
-        taskTitle.contentEditable = true
 
         const taskContent = document.createElement('p')
         taskContent.textContent = task.content
-        taskContent.contentEditable = true
 
         const taskDeadline = document.createElement('p')
         taskDeadline.textContent = task.deadline
-        taskDeadline.contentEditable = true
 
 
 
         completeBox.addEventListener('change', () => {
             if (completeBox.checked) {
-             updateTask(task.id)
+                updateTask(task.id)
                 taskTitle.style.textDecoration = "line-through"
                 taskContent.style.textDecoration = "line-through"
                 taskDeadline.style.textDecoration = "line-through"
-            }else{
+            } else {
                 updateTask(task.id)
                 taskTitle.style.textDecoration = "none"
                 taskContent.style.textDecoration = "none"
@@ -71,7 +69,9 @@ async function renderTasks() {
         updateButton.classList.add("updateButton")
         updateButton.type = "button"
         updateButton.textContent = "Editar"
-        // updateButton.onclick = () 
+        updateButton.onclick = () => {
+            displayContent(task)
+        }
 
         taskCard.appendChild(contentCard)
         taskCard.appendChild(checkCard)
@@ -85,14 +85,14 @@ async function renderTasks() {
         checklabel.appendChild(completeBox)
         checklabel.appendChild(spanBox)
 
-            return taskCard
+        return taskCard
     }
     list.innerHTML = ''
 
     const tasks = await getTasks()
     console.log(tasks)
 
-    for(let i = 0; i ; i++) {
+    for (let i = 0; i; i++) {
         const element = tasks[i]
         tasks.push(element);
     }
@@ -102,7 +102,54 @@ async function renderTasks() {
         list.appendChild(newTask)
     })
     console.log(tasks);
+
 }
+function displayContent(task) {
+    const title = task.title
+    const content = task.content
+    const deadline = task.deadline
+    const taskId = task.id
 
+    Modal.title.placeholder = title
 
+    Modal.content.placeholder = content
+
+    Modal.deadline.placeholder = deadline
+
+    Modal.taskId.value = taskId
+
+    Modal.open()
+}
+const saveButton = document.getElementById("save")
+saveButton.addEventListener("click", atualizarTarefa)
+async function atualizarTarefa() {
+    const title = Modal.title.value
+    const content = Modal.content.value
+    const deadline = Modal.deadline.value
+    const taskId = Modal.taskId
+
+    const data = {
+        title,
+        content,
+        deadline
+    }
+
+    fetch(`http://localhost:3333/tasks/${taskId}/updated`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(data)
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`)
+        }
+        return response.json()
+    }).then((responseData) => {
+        console.log('Dados enviados com sucesso: ', responseData);
+    }).catch((error) => {
+        console.error('Erro ao enviar os dados: ', error)
+    })
+}
 renderTasks()

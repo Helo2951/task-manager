@@ -24,6 +24,25 @@
         </div>
         <div id="list">
         </div>
+        <div class="modal-wrapper">
+            <div class="modal card">
+                <div class="modalContent">
+                    <h2>Atualização de informações</h2>
+                    <label for="editTitle">
+                        <input type="text" name="editTitle" id="editTitle" placeholder="Edite o título da sua tarefa" required>
+                        <input type="hidden" name="taskId" id="taskId">
+                        <button class="close">&times;</button>
+                    </label>
+                    <label for="editContent">
+                        <textarea name="editContent" id="editContent" cols="40" rows="5" placeholder="Edite sua tarefa" required></textarea>
+                    </label>
+                    <label for="editDeadline">
+                        <input type="datetime" name="editDeadline" id="editDeadline" placeholder="Edite o prazo da sua tarefa" required>
+                    </label>
+                    <button  type="button" id="save">Salvar</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script type="module" src="./javascript/renderTasks.js"></script>
     <script type="module" src="./javascript/api.js"></script>
