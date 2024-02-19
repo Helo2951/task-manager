@@ -1,7 +1,7 @@
-// import { getTasks } from "./getTasks.js";
+import { getTasks } from "./getTasks.js";
 import { Modal } from "./modal.js";
 
-export async function updateTask(){
+export async function updateTask(taskId){
 
     const inputTitle = document.getElementById('editTitle');
     const titlePlaceholder = inputTitle.getAttribute("placeholder")
@@ -43,7 +43,6 @@ export async function updateTask(){
     }).catch((error) => {
         console.error('Erro ao enviar os dados: ', error)
     })
-
 
     // const request = {
     //     method: 'PUT',

@@ -58,6 +58,13 @@ async function renderTasks() {
             }
         })
 
+        if(task.done === 1) {
+            completeBox.checked = true
+            taskTitle.style.textDecoration = "line-through"
+                taskContent.style.textDecoration = "line-through"
+                taskDeadline.style.textDecoration = "line-through"  
+        }
+
         const deleteButton = document.createElement("button")
         deleteButton.classList.add("deleteButton")
         deleteButton.type = "button"
@@ -121,13 +128,13 @@ displayContent(task) {
 
     Modal.taskId.value = taskId
 
+    const saveButton = document.getElementById("save")
+    saveButton.onclick = () => {
+        updateTask(taskId)
+    }
     Modal.open()
 
     console.log(taskId)
-}
-const saveButton = document.getElementById("save")
-saveButton.onclick = () => {
-    updateTask(taskId)
 }
 
 renderTasks()

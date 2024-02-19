@@ -19,6 +19,7 @@ h1 {
     height: 8rem;
     justify-content: center;
     align-items: center;
+    font-weight: bolder;
 }
 
 header h1,
@@ -88,7 +89,6 @@ ul {
 }
 
 .taskCard {
-    border: 1px solid #ebe7e7;
     width: 30%;
     padding: 1.5rem;
     border-radius: 7px;
@@ -96,9 +96,11 @@ ul {
     margin-top: 0.8rem;
     color: #ebe7e7;
     background-color: #24636f;
-    border: 1px double rgba(0, 0, 0, 0.424);
     display: flex;
     justify-content: space-between;
+    -webkit-box-shadow: -2px 3px 13px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 3px 13px -4px rgba(0,0,0,0.75);
+    box-shadow: -2px 3px 13px -4px rgba(0,0,0,0.75);
 
     & .contentCard {
 
@@ -108,7 +110,6 @@ ul {
             border: none;
             width: 5rem;
             border-radius: 8px;
-            border: 1px double rgba(0, 0, 0, 0.424);
         }
 
         & .updateButton {
@@ -117,7 +118,6 @@ ul {
             border: none;
             width: 5rem;
             border-radius: 8px;
-            border: 1px double rgba(0, 0, 0, 0.424);
         }
     }
 

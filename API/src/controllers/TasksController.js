@@ -53,7 +53,7 @@ class TasksController{
      }
 
      console.log(done)
-     await knex('tasks').where({id}).update({done}),[updatedStatus]
+     await knex('tasks').where({id}).update({done: updatedStatus})
 
      res.status(200).json(updatedStatus)
     }
