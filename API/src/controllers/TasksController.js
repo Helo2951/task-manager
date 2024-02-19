@@ -31,7 +31,7 @@ class TasksController{
         const {title, content, deadline} = req.body
         const {id} = req.params
 
-        const [task] = await knex('tasks').where({id})
+        const task = await knex('tasks').where({id})
 
         await knex('tasks').where({id}).update({title, content, deadline}), [task.title, task.content, task.deadline]
 

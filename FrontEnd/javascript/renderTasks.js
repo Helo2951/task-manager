@@ -1,6 +1,7 @@
 import { deleteTask } from "./deleteTasks.js"
 import { getTasks } from "./getTasks.js"
 import { Modal } from "./modal.js"
+import { statusTask } from "./statusTask.js"
 import { updateTask } from "./updateTask.js"
 
 const list = document.getElementById('list')
@@ -45,12 +46,12 @@ async function renderTasks() {
 
         completeBox.addEventListener('change', () => {
             if (completeBox.checked) {
-                updateTask(task.id)
+                statusTask(task.id)
                 taskTitle.style.textDecoration = "line-through"
                 taskContent.style.textDecoration = "line-through"
                 taskDeadline.style.textDecoration = "line-through"
             } else {
-                updateTask(task.id)
+                statusTask(task.id)
                 taskTitle.style.textDecoration = "none"
                 taskContent.style.textDecoration = "none"
                 taskDeadline.style.textDecoration = "none"
@@ -104,7 +105,9 @@ async function renderTasks() {
     console.log(tasks);
 
 }
-function displayContent(task) {
+function 
+
+displayContent(task) {
     const title = task.title
     const content = task.content
     const deadline = task.deadline
@@ -119,37 +122,12 @@ function displayContent(task) {
     Modal.taskId.value = taskId
 
     Modal.open()
+
+    console.log(taskId)
 }
 const saveButton = document.getElementById("save")
-saveButton.addEventListener("click", atualizarTarefa)
-async function atualizarTarefa() {
-    const title = Modal.title.value
-    const content = Modal.content.value
-    const deadline = Modal.deadline.value
-    const taskId = Modal.taskId
-
-    const data = {
-        title,
-        content,
-        deadline
-    }
-
-    fetch(`http://localhost:3333/tasks/${taskId}/updated`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify(data)
-    }).then((response) => {
-        if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.status}`)
-        }
-        return response.json()
-    }).then((responseData) => {
-        console.log('Dados enviados com sucesso: ', responseData);
-    }).catch((error) => {
-        console.error('Erro ao enviar os dados: ', error)
-    })
+saveButton.onclick = () => {
+    updateTask(taskId)
 }
+
 renderTasks()
